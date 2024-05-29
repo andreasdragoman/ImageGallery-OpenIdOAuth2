@@ -41,7 +41,9 @@ builder.Services.AddAuthentication(options =>
     //options.Scope.Add("openid");
     //options.Scope.Add("profile");
     options.Scope.Add("roles");
-    options.Scope.Add("imagegalleryapi.fullaccess");
+    //options.Scope.Add("imagegalleryapi.fullaccess");
+    options.Scope.Add("imagegalleryapi.read");
+    options.Scope.Add("imagegalleryapi.write");
     options.Scope.Add("country");
     //options.CallbackPath = new PathString("/signin-oidc"); // its default value
     //options.SignedOutCallbackPath = "signout-callback-oidc"; // its default value

@@ -33,8 +33,9 @@ namespace ImageGallery.API.Services
 
         public async Task<bool> IsImageOwnerAsync(Guid id, string ownerId)
         {
-            return await _context.Images
+            var x = await _context.Images
                 .AnyAsync(i => i.Id == id && i.OwnerId == ownerId);
+            return x;
         }
         
         public void AddImage(Image image)
