@@ -29,7 +29,8 @@ public static class Config
                     , "Image Gallery API"
                     , new [] { "role", "country" })
                 {
-                    Scopes = { "imagegalleryapi.fullaccess", "imagegalleryapi.read", "imagegalleryapi.write" }
+                    Scopes = { "imagegalleryapi.fullaccess", "imagegalleryapi.read", "imagegalleryapi.write" },
+                    ApiSecrets = { new Secret("apisecret".Sha256()) }
                 }
             };
 
@@ -41,6 +42,14 @@ public static class Config
                     ClientName = "Image Gallery",
                     ClientId = "imagegalleryclient",
                     AllowedGrantTypes = GrantTypes.Code,
+                    AccessTokenType = AccessTokenType.Reference,
+                    //, IdentityTokenLifetime = 300 default
+                    //, AuthorizationCodeLifetime = 300 default
+                    AccessTokenLifetime = 120, // default 3600 = 1 hour
+                    AllowOfflineAccess = true,
+                    UpdateAccessTokenClaimsOnRefresh = true,
+                    //SlidingRefreshTokenLifetime = default,
+                    //AbsoluteRefreshTokenLifetime = default,
                     RedirectUris =
                     {
                         "https://localhost:7184/signin-oidc"
